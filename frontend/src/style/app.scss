@@ -22,3 +22,9 @@ $darker: #040606;
 html {
     scroll-behavior: smooth;
 }
+
+.unselectable{
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+}

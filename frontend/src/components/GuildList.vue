@@ -13,7 +13,7 @@
                             width="150px"
                             height="150px"
                         />
-                        <div class="rounded-icon guild-initials" v-else>
+                        <div class="rounded-icon guild-initials unselectable" v-else>
                             <span>{{ guild.name.getInitials() }}</span>
                         </div>
                     </div>
