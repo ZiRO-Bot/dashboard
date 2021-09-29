@@ -1,0 +1,24 @@
+// Define variable defaults
+// $body-bg: #000;
+// $body-color: #111;
+$body-bg: #0E1418;
+$body-color: #E1F3FF;
+$dark: #0A0D0F;
+$darker: #040606;
+
+// Then import Bootstrap an BootstrapVue SCSS files (order is important)
+@import 'node_modules/bootstrap/scss/bootstrap.scss';
+@import 'node_modules/bootstrap-vue/src/index.scss';
+// Open Sans
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;0,800;1,300;1,400;1,700;1,800&display=swap');
+
+:root {
+    --discord-blurple: #5865F2;
+}
+
+.bg-darker {
+    background-color: $darker;
+}
+html {
+    scroll-behavior: smooth;
+}
