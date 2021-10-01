@@ -14,7 +14,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 #app {
     font-family: 'Open Sans', sans-serif;
     /* font-family: Avenir, Helvetica, Arial, sans-serif; */
@@ -31,5 +31,10 @@ export default {
 
 .rounded-icon {
     border-radius: 30%;
+}
+
+button.btn, a.btn {
+    padding: 10px 20px;
+    border-radius: 12px;
 }
 </style>

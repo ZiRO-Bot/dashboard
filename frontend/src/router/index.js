@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 import Root from '../views/dashboard/Root.vue'
 import Guild from '../views/dashboard/Guild.vue'
 
+// import axios from 'axios';
+
 Vue.use(VueRouter)
 
 const routes = [
