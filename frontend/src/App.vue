@@ -37,4 +37,12 @@ button.btn, a.btn {
     padding: 10px 20px;
     border-radius: 12px;
 }
+
+code {
+    font-size: 82.5%;
+    color: var(--light) !important;
+    background-color: var(--gray-dark);
+    padding: .2em .4em;
+    border-radius: 6px;
+}
 </style>

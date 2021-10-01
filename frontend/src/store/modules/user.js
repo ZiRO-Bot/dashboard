@@ -13,7 +13,7 @@ const getters = {
 
 const actions = {
     async getUserData({commit}) {
-        await axios.get('/api/@me')
+        await axios.get('/api/v1/@me')
         .then((res) => {
             commit('setUserData', res.data);
         })

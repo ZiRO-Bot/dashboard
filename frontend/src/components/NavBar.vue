@@ -1,6 +1,6 @@
 <template>
     <header class="h-navbar">
-        <b-navbar fixed="top" toggleable="sm" type="dark" variant="dark">
+        <b-navbar class="navbar-shadow" fixed="top" toggleable="sm" type="dark" variant="dark">
             <b-navbar-brand class="clickable" @click="goTo('/')">
                 <img class="rounded-icon" src="../assets/logo.png" width="41" height="41"/>
                 <a class="brand-name" style="font-weight: 800;">Z3R0</a>
@@ -38,6 +38,9 @@
 <style lang="scss">
 .navbar-nav .nav-item {
     padding-inline: 5px;
+}
+.navbar-shadow {
+    box-shadow: 0px 0px 30px black;
 }
 .brand-name {
     padding: 5px;
@@ -136,7 +139,7 @@ export default {
         },
     },
     created() {
-        this.getUserData().catch(this.clearGeneralData());
+        /* this.getUserData().catch(this.clearGeneralData()); */
     }
 };
 </script>

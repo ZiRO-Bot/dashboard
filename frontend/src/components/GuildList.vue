@@ -34,26 +34,20 @@
 
 <script>
 import { mapActions } from 'vuex';
-import axios from 'axios';
+/* import axios from 'axios'; */
 
 export default {
     name: 'GuildList',
-    data() {
-        return {
-            guilds: [],
-        }
-    },
     computed: {
         user: function() {
             return this.$store.getters.discord_user;
         },
+        guilds: function() {
+            return this.$store.getters.discord_guilds;
+        },
     },
     methods: {
-        ...mapActions(['clearUserData']),
-        async getGuilds() {
-            await axios.get('/api/@me/guilds')
-            .then((res) => {this.guilds = res.data});
-        },
+        ...mapActions(['getGuilds', 'clearUserData']),
     },
     created() {
         this.getGuilds()
@@ -65,9 +59,6 @@ export default {
                 console.error(error);
             }
         });
-        /* if (this.guilds == null) { */
-        /*     this.getGuilds() */
-        /* } */
     }
 }
 </script>

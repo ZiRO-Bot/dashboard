@@ -8,7 +8,7 @@
 import GuildList from '@/components/GuildList.vue'
 
 export default {
-    name: 'Dashboard Root',
+    name: 'DashboardRoot',
     components: {
         GuildList
     }

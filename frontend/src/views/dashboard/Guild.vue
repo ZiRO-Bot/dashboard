@@ -8,7 +8,7 @@
 import axios from 'axios';
 
 export default {
-    name: 'Dashboard Guild',
+    name: 'DashboardGuild',
     data(){
         return {
             id: this.$route.params.id

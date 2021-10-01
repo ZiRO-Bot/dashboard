@@ -9,7 +9,7 @@ import store from './store';
 import './style/app.scss';
 
 // FastAPI backend
-const apiURL = "http://127.0.0.1:8000";
+const apiURL = "http://127.0.0.1";
 
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = apiURL;
@@ -26,7 +26,12 @@ String.prototype.getInitials = function(glue){
     var initials = this.replace(/[^a-zA-Z- ]/g, "").match(/\b\w/g);
     
     if (glue) {
-        return initials.join('');
+        try {
+            return initials.join('');
+        }
+        catch (error) {
+            return this.substring(0,3);
+        }
     }
 
     return initials;
