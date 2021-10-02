@@ -1,7 +1,17 @@
 <template>
     <div id="app">
-        <NavBar/>
-        <router-view/>
+        <!---
+        <b-button v-b-toggle.c-sidebar class="m-1">Toggle Collapse</b-button>
+        <b-collapse id="c-sidebar">
+            <div class="sidebar">
+                <h1>Test</h1>
+            </div>
+        </b-collapse>
+        --->
+        <div class="route-side">
+            <NavBar/>
+            <router-view/>
+        </div>
     </div>
 </template>
 
