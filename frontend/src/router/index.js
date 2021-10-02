@@ -5,6 +5,7 @@ import Root from '../views/dashboard/Root.vue'
 import Guild from '../views/dashboard/Guild.vue'
 import Login from '../views/Login.vue'
 
+import store from '@/store';
 // import axios from 'axios';
 
 Vue.use(VueRouter)
@@ -25,7 +26,8 @@ const routes = [
         name: 'DashboardRoot',
         component: Root,
         meta: {
-            requireAuth: true,
+            requiresAuth: true,
+            autoLogin: true
         }
     },
     {
@@ -33,7 +35,7 @@ const routes = [
         name: 'DashboardGuild',
         component: Guild,
         meta: {
-            requireAuth: true,
+            requiresAuth: true,
         }
     },
 ]
@@ -43,5 +45,18 @@ const router = new VueRouter({
     base: process.env.BASE_URL,
     routes
 })
+
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        if (!store.getters.isLoggedIn) {
+            if (to.matched.some(record => record.meta.autoLogin)) {
+                window.location = window.apiURL + "/api/login";
+            }
+            next('/');
+            return;
+        }
+    }
+    next();
+});
 
 export default router

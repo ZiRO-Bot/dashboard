@@ -108,13 +108,13 @@ export default {
         }
     },
     methods: {
-        ...mapActions(['clearGeneralData']),
+        ...mapActions(['logOut']),
         getBotStats() {
             axios.get('/api/v1/botstats')
             .then((res) => {
                 this.stats = res.data;
                 if (!res.data.isLoggedIn) {
-                    this.clearGeneralData()
+                    this.logOut();
                 }
             })
         },

@@ -7,7 +7,8 @@ const state = {
 
 
 const getters = {
-    discord_user: state => state.discord_user
+    discord_user: state => state.discord_user,
+    isLoggedIn: state => !!state.discord_user,
 };
 
 
@@ -20,6 +21,10 @@ const actions = {
     },
     clearUserData({commit}) {
         commit('setUserData', null)
+    },
+    logOut({commit}) {
+        commit('setUserData', null)
+        commit('setGuilds', null)
     }
 };
 

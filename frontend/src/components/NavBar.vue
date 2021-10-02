@@ -105,15 +105,11 @@ export default {
             return this.$store.getters.discord_user;
         },
         isLoggedIn: function() {
-            return this.userInfo != null;
+            return this.$store.getters.isLoggedIn;
         }
     },
     methods: {
-        ...mapActions(['getUserData', 'clearUserData', 'clearGuilds']),
-        clearGeneralData() {
-            this.clearUserData();
-            this.clearGuilds();
-        },
+        ...mapActions(['getUserData', 'logOut']),
         async logout() {
             let clear = false;
 
@@ -129,7 +125,7 @@ export default {
             });
 
             if (clear) {
-                this.clearGeneralData();
+                this.logOut();
             }
 
             this.goTo('/');
@@ -138,8 +134,5 @@ export default {
             window.location = this.$apiURL + "/api/login";
         },
     },
-    created() {
-        /* this.getUserData().catch(this.clearGeneralData()); */
-    }
 };
 </script>
