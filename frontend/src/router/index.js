@@ -36,6 +36,7 @@ const routes = [
         component: Guild,
         meta: {
             requiresAuth: true,
+            autoLogin: true
         }
     },
 ]
@@ -47,6 +48,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+    window.scrollTo(0, 0) // scroll to the top
     if (to.matched.some(record => record.meta.requiresAuth)) {
         if (!store.getters.isLoggedIn) {
             if (to.matched.some(record => record.meta.autoLogin)) {

@@ -1,41 +1,45 @@
 <template>
     <div class="dashguild">
-        Hello There {{ id }}
+        <a v-if="isLoading">
+            Loading...
+        </a>
+        <a v-else>
+            Hello There {{ id }}
+        </a>
     </div>
 </template>
 
 <script>
-import axios from 'axios';
+import { mapActions } from 'vuex';
+/* import axios from 'axios'; */
 
 export default {
     name: 'DashboardGuild',
     data(){
         return {
-            id: this.$route.params.id
+            isLoading: true,
+            id: this.$route.params.id,
+        }
+    },
+    computed: {
+        guilds: function() {
+            return this.$store.getters.discord_guilds;
         }
     },
     methods: {
-        checkValidGuild() {
-            axios.get('/api/@me/guilds')
-            .then((res) => {
-                let shouldReturn = true;
-                const guilds = res.data;
-                guilds.forEach((value) => {
-                    if (value.id === this.id) {
-                        shouldReturn = false;
-                    }
-                })
-                if (shouldReturn) {
-                    this.goTo('/dashboard');
-                }
-            });
-        }
+        ...mapActions(['getGuilds']),
     },
     created() {
-        this.checkValidGuild().then(
-            console.log("test")
-        );
-        /* console.log("test"); */
+        // Check if user can manage the guild
+        this.getGuilds().then(() => {
+            const guild = this.guilds.find(x => x.id === this.id);
+
+            if (!guild) {
+                this.goTo('/dashboard')
+            } else {
+                this.isLoading = false
+            }
+        });
     }
 }
 </script>
