@@ -9,7 +9,7 @@
                 <div class="guild" v-for="guild in guilds" :key="guild">
                     <div class="guild-logo">
                         <img class="rounded-icon" v-if="guild.icon"
-                            :src="'https://cdn.discordapp.com/icons/' + guild.id + '/' + guild.icon + '.png'"
+                            :src="`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png`"
                             width="150px"
                             height="150px"
                         />
@@ -22,7 +22,7 @@
                             <a>{{ guild.name }}</a>
                         </div>
                         <div>
-                            <b-btn variant="primary" v-if="guild.bot" @click="goTo('/dashboard/' + guild.id)">Setup</b-btn>
+                            <b-btn variant="primary" v-if="guild.bot" @click="goTo(`/dashboard/${guild.id}`)">Setup</b-btn>
                             <b-btn v-else :href="guild.invite">Invite</b-btn>
                         </div>
                     </div>

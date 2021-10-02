@@ -20,7 +20,7 @@
                         <b-dd-divider/>
                         <template #button-content>
                             <img class="rounded-icon"
-                                :src="'https://cdn.discordapp.com/avatars/' + userInfo.id + '/' + userInfo.avatar + '.png'"
+                                :src="`https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}.png`"
                                 width="31"
                                 height="31"
                             />
@@ -64,9 +64,9 @@ header.h-navbar {
     }
     .dropdown-item {
         color: var(--light)!important;
-    }
-    :hover, :focus {
-        background-color: var(--primary)!important;
+        &:hover, &:focus {
+            background-color: var(--primary)!important;
+        }
     }
 }
 @media (min-width: 576px) {
@@ -78,18 +78,18 @@ header.h-navbar {
 .dropdown-menu {
     transition: all 0.5s ease;
     margin: 0.5rem 0 0;
-}
-.dropdown-menu:not(.show) {
-    display: block !important;
-    overflow: hidden;
-    transform: translate(0, -5%);
-    visibility: hidden;
-    opacity: 0;
-}
-.dropdown-menu.show {
-    display: block;
-    overflow: visible;
-    transform: translate(0, 0);
+    &:not(.show) {
+        display: block !important;
+        overflow: hidden;
+        transform: translate(0, -5%);
+        visibility: hidden;
+        opacity: 0;
+    }
+    &.show {
+        display: block;
+        overflow: visible;
+        transform: translate(0, 0);
+    }
 }
 */
 </style>
