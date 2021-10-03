@@ -15,10 +15,13 @@ export default {
         async doAuth(code) {
             // Try to login
             await axios.post('/api/v1/auth', { code: code })
-            .catch(this.goTo("/"));
+            .catch(() => {
+                this.goTo("/")
+            });
 
             // Logged in successfully
             await this.getUserData();
+
             this.goTo("/dashboard");
         }
     },

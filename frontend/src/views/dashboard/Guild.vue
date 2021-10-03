@@ -10,7 +10,7 @@
                     <h4 class="guild-name">
                         {{ guild.name }}
                     </h4>
-                    <p><b-icon-person-fill/> <b>0</b> Members</p>
+                    <p><b-icon-person-fill/> <b>{{ guild.stats.members }}</b> Members</p>
                 </div>
             </div>
             <div class="dashboard-menus bg-darker">
