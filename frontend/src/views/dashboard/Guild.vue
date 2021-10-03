@@ -13,7 +13,7 @@
                     <p><b-icon-person-fill/> <b>0</b> Members</p>
                 </div>
             </div>
-            <div class="dashboard-menus">
+            <div class="dashboard-menus bg-darker">
                 <a class="clickable" @click="goTo(`/dashboard/${id}`)">
                     <b-icon-house-fill/> Dashboard
                 </a>
@@ -24,7 +24,9 @@
                     <b-icon-wrench/> Utility
                 </a>
             </div>
-            <router-view :guild="guild"></router-view>
+            <div class="bg-dark">
+                <router-view :guild="guild"></router-view>
+            </div>
         </div>
     </div>
 </template>
@@ -53,7 +55,6 @@
     .dashboard-menus {
         margin-top: 25px;
         padding-block: 12px;
-        background: black;
         a {
             color: var(--light) !important;
             text-decoration: none !important;

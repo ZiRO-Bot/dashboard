@@ -23,40 +23,6 @@
     </div>
 </template>
 
-<script>
-import { mapActions } from 'vuex';
-import GuildIcon from './GuildIcon.vue';
-
-export default {
-    name: 'GuildList',
-    components: {
-        GuildIcon,
-    },
-    computed: {
-        user: function() {
-            return this.$store.getters.discord_user;
-        },
-        guilds: function() {
-            return this.$store.getters.discord_guilds;
-        },
-    },
-    methods: {
-        ...mapActions(['getGuilds', 'clearUserData']),
-    },
-    created() {
-        this.getGuilds()
-        .catch((error) => {
-            if (error.response.status == 401 && location != null) {
-                this.clearUserData();
-                window.location = this.$apiURL + "/api/login";
-            } else {
-                console.error(error);
-            }
-        });
-    }
-}
-</script>
-
 <style lang="scss">
 #guilds {
     padding-top: 10px;
@@ -100,3 +66,37 @@ export default {
     width: min(100%, 948px);
 }
 </style>
+
+<script>
+import { mapActions } from 'vuex';
+import GuildIcon from './GuildIcon.vue';
+
+export default {
+    name: 'GuildList',
+    components: {
+        GuildIcon,
+    },
+    computed: {
+        user: function() {
+            return this.$store.getters.discord_user;
+        },
+        guilds: function() {
+            return this.$store.getters.discord_guilds;
+        },
+    },
+    methods: {
+        ...mapActions(['getGuilds', 'clearUserData']),
+    },
+    created() {
+        this.getGuilds()
+        .catch((error) => {
+            if (error.response.status == 401 && location != null) {
+                this.clearUserData();
+                window.location = this.$apiURL + "/api/login";
+            } else {
+                console.error(error);
+            }
+        });
+    }
+}
+</script>
