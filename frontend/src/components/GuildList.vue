@@ -7,16 +7,7 @@
 
             <b-card-body class="guild-list">
                 <div class="guild" v-for="guild in guilds" :key="guild">
-                    <div class="guild-logo">
-                        <img class="rounded-icon" v-if="guild.icon"
-                            :src="guildIcon(guild)"
-                            width="150px"
-                            height="150px"
-                        />
-                        <div class="rounded-icon guild-initials unselectable" v-else>
-                            <span>{{ guild.name.getInitials() }}</span>
-                        </div>
-                    </div>
+                    <GuildIcon :guild="guild"/>
                     <div class="guild-info">
                         <div class="guild-info-name">
                             <a>{{ guild.name }}</a>
@@ -34,10 +25,13 @@
 
 <script>
 import { mapActions } from 'vuex';
-/* import axios from 'axios'; */
+import GuildIcon from './GuildIcon.vue';
 
 export default {
     name: 'GuildList',
+    components: {
+        GuildIcon,
+    },
     computed: {
         user: function() {
             return this.$store.getters.discord_user;
@@ -78,40 +72,28 @@ export default {
 .guild {
     width: 100%;
     padding: 24px;
-    .guild-logo {
+    .guild-icon {
         padding-bottom: 20px;
+    }
+    .guild-info {
         display: flex;
-        justify-content: center;
-        .guild-initials {
-            background: var(--discord-blurple);
+        justify-content: space-between;
+        .guild-info-name {
             display: flex;
-            font-size: xx-large;
-            font-weight: bold;
-            width: 150px;
-            height: 150px;
             align-items: center;
-            justify-content: center;
+            a {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -moz-box-orient: vertical;
+                -webkit-box-orient: vertical;
+            }
         }
     }
 }
 .guild a img {
     padding: 14px;
-}
-.guild-info {
-    display: flex;
-    justify-content: space-between;
-    .guild-info-name {
-        display: flex;
-        align-items: center;
-        a {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -moz-box-orient: vertical;
-            -webkit-box-orient: vertical;
-        }
-    }
 }
 .guild-list-card {
     margin: 40px auto 0px;

@@ -5,7 +5,7 @@
         </a>
         <div class="dashguild-content" v-else>
             <div class="guild-detailed-info">
-                <img :src="guildIcon(guild)"/>
+                <GuildIcon :guild="guild"/>
                 <div class="guild-stats">
                     <h4 class="guild-name">
                         {{ guild.name }}
@@ -67,10 +67,13 @@
 
 <script>
 import { mapActions } from 'vuex';
-/* import axios from 'axios'; */
+import GuildIcon from '@/components/GuildIcon.vue';
 
 export default {
     name: 'DashboardGuild',
+    components: {
+        GuildIcon,
+    },
     data(){
         return {
             guild: null,
