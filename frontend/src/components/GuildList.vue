@@ -9,7 +9,7 @@
                 <div class="guild" v-for="guild in guilds" :key="guild">
                     <div class="guild-logo">
                         <img class="rounded-icon" v-if="guild.icon"
-                            :src="`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png`"
+                            :src="guildIcon(guild)"
                             width="150px"
                             height="150px"
                         />

@@ -3,11 +3,55 @@
         <a v-if="isLoading">
             Loading...
         </a>
-        <a v-else>
-            Hello There {{ id }}
-        </a>
+        <div class="dashguild-content" v-else>
+            <div class="guild-detailed-info">
+                <img :src="guildIcon(guild)"/>
+                <div class="guild-stats">
+                    <h4 class="guild-name">
+                        {{ guild.name }}
+                    </h4>
+                    <p><b-icon-person-fill/> <b>0</b> Members</p>
+                </div>
+            </div>
+            <div class="dashboard-menus">
+                <a><b-icon-house-fill/> Dashboard</a>
+                <a><b-icon-gear-fill/> Settings</a>
+                <a><b-icon-wrench/> Utility</a>
+            </div>
+        </div>
     </div>
 </template>
+
+<style lang="scss">
+.dashguild-content {
+    .guild-detailed-info {
+        padding-inline: 50px;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin-top: 20px;
+        > .guild-stats {
+            margin-left: 20px;
+            > p {
+                margin-bottom: 0px;
+            }
+            > .guild-name {
+                font-weight: bold;
+                color: var(--light)!important;
+                text-decoration: none!important;
+            }
+        }
+    }
+    .dashboard-menus {
+        margin-top: 25px;
+        padding-block: 12px;
+        background: black;
+        a:not(:last-child) {
+            margin-right: 45px;
+        }
+    }
+}
+</style>
 
 <script>
 import { mapActions } from 'vuex';
@@ -17,6 +61,7 @@ export default {
     name: 'DashboardGuild',
     data(){
         return {
+            guild: null,
             isLoading: true,
             id: this.$route.params.id,
         }
@@ -37,6 +82,7 @@ export default {
             if (!guild) {
                 this.goTo('/dashboard')
             } else {
+                this.guild = guild
                 this.isLoading = false
             }
         });

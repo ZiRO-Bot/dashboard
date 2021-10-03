@@ -20,7 +20,7 @@
                         <b-dd-divider/>
                         <template #button-content>
                             <img class="rounded-icon"
-                                :src="`https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}.png`"
+                                :src="userAvatar(userInfo)"
                                 width="31"
                                 height="31"
                             />

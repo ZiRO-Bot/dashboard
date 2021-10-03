@@ -44,11 +44,17 @@ String.prototype.capitalize = function(){
 };
 
 Vue.mixin({
-  methods: {
-    goTo: function(endpoint) {
-        this.$router.push(endpoint)
+    methods: {
+        goTo(endpoint) {
+            this.$router.push(endpoint)
+        },
+        guildIcon(guild) {
+            return `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png`
+        },
+        userAvatar(user) {
+            return `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
+        },
     }
-  }
 });
 
 Vue.config.productionTip = false;
