@@ -1,12 +1,14 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Root from '../views/dashboard/Root.vue'
-import Guild from '../views/dashboard/Guild.vue'
-import Login from '../views/Login.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Home from '../views/Home.vue';
+import Root from '../views/dashboard/Root.vue';
+import Guild from '../views/dashboard/Guild.vue';
+import GuildDashboard from '../views/dashboard/GuildDashboard.vue';
+import GuildSettings from '../views/dashboard/GuildSettings.vue';
+import GuildUtility from '../views/dashboard/GuildUtility.vue';
+import Login from '../views/Login.vue';
 
 import store from '@/store';
-// import axios from 'axios';
 
 Vue.use(VueRouter)
 
@@ -37,7 +39,21 @@ const routes = [
         meta: {
             requiresAuth: true,
             autoLogin: true
-        }
+        },
+        children: [
+            {
+                path: '',
+                component: GuildDashboard,
+            },
+            {
+                path: 'settings',
+                component: GuildSettings,
+            },
+            {
+                path: 'utility',
+                component: GuildUtility,
+            },
+        ],
     },
 ]
 
@@ -55,16 +71,17 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    window.scrollTo(0, 0) // scroll to the top
     if (to.matched.some(record => record.meta.requiresAuth)) {
         if (!store.getters.isLoggedIn) {
             if (to.matched.some(record => record.meta.autoLogin)) {
                 window.location = window.apiURL + "/api/login";
             }
+            window.scrollTo(0, 0) // scroll to the top
             next('/');
             return;
         }
     }
+    window.scrollTo(0, 0) // scroll to the top
     next();
 });
 

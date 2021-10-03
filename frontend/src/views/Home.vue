@@ -8,7 +8,7 @@
 
             <hr class="my-4"/>
 
-            <b-btn variant="info" @click="goTo('/dashboard')">Add to Discord</b-btn>
+            <b-btn variant="info" @click="goTo('dashboard')">Add to Discord</b-btn>
 
             <b-btn href="#features">Features</b-btn>
         </b-jumbotron>
